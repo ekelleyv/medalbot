@@ -5,6 +5,11 @@ from medalbot.get_counts import get_counts
 app = Flask(__name__)
 
 
+@app.route("/")
+def home():
+    return "Welcome to medalbot"
+
+
 @app.route("/api/v1/medals")
 def medals():
     return jsonify(get_counts())
