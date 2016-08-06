@@ -29,6 +29,15 @@ def format_extraction_response(raw_response):
     return medal_count_list
 
 
+def get_counts_by_country_id(country_id):
+    counts = get_counts()
+    for count_data in counts:
+        if count_data["id"] == country_id:
+            return count_data
+
+    return None
+
+
 @ttl_cache(ttl=300)
 def get_counts():
     """
