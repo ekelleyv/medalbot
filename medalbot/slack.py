@@ -18,4 +18,5 @@ def get_slack_counts():
             count["total_count"]
         ])
 
-    return tabulate(response_table, headers)
+    # Use block so things align
+    return "```{0}```".format(tabulate(response_table, headers))
