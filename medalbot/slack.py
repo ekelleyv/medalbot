@@ -5,7 +5,7 @@ from medalbot.get_counts import get_counts
 
 def get_slack_counts():
     counts = get_counts()[:10]
-    headers = ["#", "Country", ":gold:", ":silver:", ":bronze", "Total"]
+    headers = ["#", "Country", "Gold", "Silver", "Bronze", "Total"]
     response_table = []
 
     for count in counts:
