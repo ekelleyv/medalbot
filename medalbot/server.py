@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, abort
+from flask import Flask, jsonify
 
 from medalbot.get_counts import get_counts, get_counts_by_country_id
 
@@ -20,7 +20,7 @@ def medals_by_country(country_id):
     country_counts = get_counts_by_country_id(country_id)
 
     if not country_counts:
-        response = jsonify({"error_msg": "No country found for {0}".format(country_id)})
+        response = jsonify({"error_msg": "No medal results found for {0}".format(country_id)})
         response.status_code = 404
         return response
 
