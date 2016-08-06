@@ -1,0 +1,53 @@
+FORMAT: 1A
+
+# MedalBot: Olympic medal API
+
+A simple olympic medal api for the 2016 games in Rio. Influenced by a similar api from the [2014 games](http://olympics.clearlytech.com/api-doc.html). Uses [import.io](http://import.io) for web scraping. Full source code is available on [GitHub](https://github.com/ekelleyv/medalbot).
+
+By [Ed Kelley](https://twitter.com/efkv).
+
+# Group Medal Counts
+
+## GET /api/v1/medals
++ Response 200 (application/json)
+
+        [
+          {
+            "bronze_count": 1,
+            "country_name": "China",
+            "gold_count": 0,
+            "id": "china",
+            "place": 1,
+            "silver_count": 1,
+            "total_count": 2
+          },
+          {
+            "bronze_count": 0,
+            "country_name": "United States",
+            "gold_count": 1,
+            "id": "united-states",
+            "place": 2,
+            "silver_count": 0,
+            "total_count": 1
+          }
+        ]
+
+
+## GET /api/v1/medals/{id}
++ Parameters
+    + id: `united-states` (required, string) - The country id
+
++ Response 200 (application/json)
+
+        {
+          "bronze_count": 0,
+          "country_name": "United States",
+          "gold_count": 1,
+          "id": "united-states",
+          "place": 2,
+          "silver_count": 0,
+          "total_count": 1
+        }
+
+
+
