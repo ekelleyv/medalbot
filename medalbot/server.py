@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 
 from medalbot.get_counts import get_counts, get_counts_by_country_id
+from medalbot.slack import get_slack_counts
 
 app = Flask(__name__)
 
@@ -8,6 +9,12 @@ app = Flask(__name__)
 @app.route("/")
 def docs():
     return app.send_static_file('endpoints.html')
+
+
+@app.route("/slack_medals")
+def slack_medals():
+    """Formatted endpoint to be used as slash command in slack."""
+    return get_slack_counts()
 
 
 @app.route("/api/v1/medals")
