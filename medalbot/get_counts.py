@@ -12,15 +12,20 @@ def format_extraction_response(raw_response):
     medal_count_list = []
 
     for country in raw_response["extractorData"]["data"][0]["group"]:
-        country_name = country["Country value"][0]["text"]
+        rank = country["Rank"][0]["text"]
+        # Don't include unranked teams
+        if rank == "-":
+            continue
+
+        country_name = country["Country"][0]["text"]
         country_data = {
             "id": _country_name_to_id(country_name),
-            "place": int(country["Place"][0]["text"]),
+            "place": int(rank),
             "country_name": country_name,
-            "gold_count": int(country["Gold number"][0]["text"]),
-            "silver_count": int(country["Silver number"][0]["text"]),
-            "bronze_count": int(country["Bronze number"][0]["text"]),
-            "total_count": int(country["Total number"][0]["text"]),
+            "gold_count": int(country["Gold"][0]["text"]),
+            "silver_count": int(country["Silver"][0]["text"]),
+            "bronze_count": int(country["Bronze"][0]["text"]),
+            "total_count": int(country["Total"][0]["text"]),
 
         }
 
